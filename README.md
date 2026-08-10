@@ -154,42 +154,6 @@ Possible fields:
 
 ---
 
-## Planned Tech Stack
-
-The current planned technology stack is:
-
-### Frontend
-
-- React
-- JavaScript
-- HTML
-- CSS
-- Tailwind CSS
-- Vite
-
-### Backend / Database
-
-- Supabase
-- PostgreSQL
-
-Supabase is currently being considered because it provides:
-
-- PostgreSQL database
-- Authentication
-- Database API
-- User management
-
-This will allow the project to focus more heavily on building the application itself instead of creating authentication and database infrastructure from scratch.
-
-### Hosting
-
-Planned hosting:
-
-- **Vercel** — Frontend
-- **Supabase** — Database, authentication, and backend services
-
----
-
 ## Planned Development Roadmap
 
 ### Phase 1 — Project Setup
