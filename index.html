@@ -1,13 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rate-my-coop</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate My Coop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+
+        <a href="#" class="logo">
+            <img src="/src/images/RateMyCoopMiniLogo.png" alt="Rate My Coop logo">
+            <h2>Rate My Coop</h2>
+        </a>
+        <ul class="links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Browse</a></li>
+          <li><a href="#">Log In</a></li>
+          
+        </ul>
+        <button class="login-btn">Sign Up</button>
+    </nav>
+</header>
+
+<!--Main Home/Search Section-->
+<div class="main">
+  <div class="main-box">
+    <div class="main-logo">
+      <img src="/src/images/RateMyCoopLogo.jpg" alt="Rate My Coop Logo">
+      <h2>FIND YOUR NEXT CO-OP.</h2>
+    </div>
+
+    <div class="search">
+      <h2>Search your coop to get started</h2>
+      <form class="search-form">
+        <div class="search-box">
+          <img src="/src/images/Search_image.png" alt="Search" class="search-icon">
+          <input type="text" placeholder="Search companies or positions...">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</body>
 </html>
