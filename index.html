@@ -6,6 +6,8 @@
   <title>Rate My Coop</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
 </head>
 <body>
 <header>
@@ -16,10 +18,10 @@
             <h2>Rate My Coop</h2>
         </a>
         <ul class="links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Browse</a></li>
-          <li><a href="#">Log In</a></li>
-          
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse.html">Browse</a></li>
+          <li><a href="#" id="login-btn">Log In</a></li>          
+
         </ul>
         <button class="login-btn">Sign Up</button>
     </nav>
@@ -45,6 +47,49 @@
   </div>
 </div>
 
+<!--Botton Info-->
+
+
+<!-- POP UP FORMS -->
+<div class="form-popup" id="login-popup">
+  <div class="form-box">
+
+    <div class="form-details">
+      <h2>Welcome Back</h2>
+      <p>Please log in using your personal information to continue.</p>
+    </div>
+
+    <div class="form-content">
+      <button class="close-btn" type="button">&times;</button>
+
+      <h2>LOGIN</h2>
+
+      <form action="#">
+        <div class="input-field">
+          <input type="email" required>
+          <label>Email</label>
+        </div>
+
+        <div class="input-field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+
+        <a href="#" class="forgot-password">Forgot password?</a>
+
+        <button type="submit" class="submit-btn">Log In</button>
+      </form>
+
+      <div class="bottom-link">
+        Don't have an account?
+        <a href="#" id="signup-link">Sign Up</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--Black Part with More inFo-->
 
 </body>
 </html>
