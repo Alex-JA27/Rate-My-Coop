@@ -23,7 +23,7 @@
           <li><a href="#" id="login-btn">Log In</a></li>          
 
         </ul>
-        <button class="login-btn">Sign Up</button>
+        <button class="signup-btn">Sign Up</button>
     </nav>
 </header>
 
@@ -51,6 +51,9 @@
 
 
 <!-- POP UP FORMS -->
+
+<!-- Log IN FORMS -->
+
 <div class="form-popup" id="login-popup">
   <div class="form-box">
 
@@ -59,7 +62,7 @@
       <p>Please log in using your personal information to continue.</p>
     </div>
 
-    <div class="form-content">
+    <div class="form-content" id="login-form">
       <button class="close-btn" type="button">&times;</button>
 
       <h2>LOGIN</h2>
@@ -84,8 +87,36 @@
         Don't have an account?
         <a href="#" id="signup-link">Sign Up</a>
       </div>
-
     </div>
+
+
+    <!-- Sign Up FORMS -->
+
+    <div class="form-content" id="signup-form" style="display: none;">
+      <button class="close-btn" type="button">&times;</button>
+
+      <h2>Sign Up</h2>
+
+      <form action="#">
+        <div class="input-field">
+          <input type="email" required>
+          <label>Email</label>
+        </div>
+
+        <div class="input-field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+
+      <div class="bottom-link">
+        You have an account?
+        <a href="#" id="login-link">Log In</a>
+      </div>
+    </div>
+
   </div>
 </div>
 

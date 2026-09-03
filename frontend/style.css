@@ -125,7 +125,7 @@ header {
 
 /* SIGN UP BUTTON */
 
-.navbar .login-btn {
+.navbar .signup-btn{
     border: none;
 
     color: white;
@@ -145,7 +145,7 @@ header {
     transition: all 0.2s ease;
 }
 
-.navbar .login-btn:hover {
+.navbar .signup-btn:hover {
     background-color: #e51927;
 
     transform: translateY(-2px);
