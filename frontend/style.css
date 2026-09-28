@@ -125,7 +125,7 @@ header {
 
 /* SIGN UP BUTTON */
 
-.navbar .login-btn {
+.navbar .signup-btn {
     border: none;
 
     color: white;
@@ -145,7 +145,7 @@ header {
     transition: all 0.2s ease;
 }
 
-.navbar .login-btn:hover {
+.navbar .signup-btn:hover {
     background-color: #e51927;
 
     transform: translateY(-2px);
@@ -165,7 +165,7 @@ header {
             rgba(30, 20, 20, 0.42),
             rgba(30, 20, 20, 0.42)
         ),
-        url("/src/images/Student_background.png");
+        url("src/images/Student_background.png");
 
     background-size: cover;
     background-position: center;
@@ -354,7 +354,7 @@ transform: translateY(-40px);
             rgba(30, 20, 20, 0.42),
             rgba(30, 20, 20, 0.42)
         ),
-        url("/src/images/loginpic.png");
+        url("src/images/loginpic.png");
     
     background-size: cover;
     background-position: center;
@@ -486,4 +486,195 @@ transform: translateY(-40px);
     color: #ff1f2d;
     font-weight: 600;
     text-decoration: none;
+}
+
+
+
+/* Carousel of Companies */
+/* Text before the carousel */
+.text-from {
+    width: 100%;
+    max-width: 750px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+    gap: 12px;
+
+transform: translateY(-40px);
+
+}
+
+/* Base container layout */
+.carousel-container {
+  overflow: hidden; /* Hides the off-screen items */
+  width: 1000%;
+  max-width: 90000px;
+  margin: 0;
+  border-radius: 8px;
+}
+
+/* The animated track */
+.carousel-track {
+  display: flex;
+  width: max-content; /* Extends dynamically to fit all groups */
+  animation: scrollInfinite 10s linear infinite; /* Loops forever */
+}
+
+/* Individual card groupings */
+.carousel-group {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+}
+
+/* Items inside the carousel */
+.carousel-item {
+  width: 80px;
+  height: 80px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  flex-shrink: 0; /* Prevents cards from crushing together */
+}
+.carousel-item img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 9px;
+}
+
+/* Keyframe logic: Translate half the track length */
+@keyframes scrollInfinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Moves group 1 entirely out of view */
+  }
+}
+
+/* Optional: Pause the scrolling animation when hovering over it */
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+
+
+/* Botton Black Box */
+/* ---------------- */
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* BLACK FOOTER */
+
+.btn-box {
+    margin-top: auto;
+    width: 100%;
+    background-color: black;
+}
+
+
+/* Footer Navigation */
+
+.btn-navbar {
+    width: 100%;
+    padding: 12px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Footer Links */
+
+.btn-navbar .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+    gap: 30px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.btn-navbar .links a {
+    position: relative;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    padding: 5px 0;
+}
+
+
+/* LINK UNDERLINE */
+
+.btn-navbar .links a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: white;
+
+    transition: width 0.25s ease;
+}
+
+.btn-navbar .links a:hover::after {
+    width: 100%;
+}
+
+
+/* LOGO + COPYRIGHT */
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    margin-top: 8px;
+
+    text-decoration: none;
+}
+
+.logo img {
+    width: 25px;
+    height: auto;
+}
+
+.logo h3 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 600;
 }

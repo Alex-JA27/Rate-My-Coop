@@ -14,7 +14,7 @@
     <nav class="navbar">
 
         <a href="#" class="logo">
-            <img src="/src/images/RateMyCoopMiniLogo.png" alt="Rate My Coop logo">
+            <img src="src/images/RateMyCoopMiniLogo.png" alt="Rate My Coop logo">
             <h2>Rate My Coop</h2>
         </a>
         <ul class="links">
@@ -23,7 +23,7 @@
           <li><a href="#" id="login-btn">Log In</a></li>          
 
         </ul>
-        <button class="login-btn">Sign Up</button>
+        <button class="signup-btn">Sign Up</button>
     </nav>
 </header>
 
@@ -31,7 +31,7 @@
 <div class="main">
   <div class="main-box">
     <div class="main-logo">
-      <img src="/src/images/RateMyCoopLogo.jpg" alt="Rate My Coop Logo">
+      <img src="src/images/RateMyCoopLogo.jpg" alt="Rate My Coop Logo">
       <h2>FIND YOUR NEXT CO-OP.</h2>
     </div>
 
@@ -39,7 +39,7 @@
       <h2>Search your coop to get started</h2>
       <form class="search-form">
         <div class="search-box">
-          <img src="/src/images/Search_image.png" alt="Search" class="search-icon">
+          <img src="src/images/Search_image.png" alt="Search" class="search-icon">
           <input type="text" placeholder="Search companies or positions...">
         </div>
       </form>
@@ -49,8 +49,32 @@
 
 <!--Botton Info-->
 
+<!---Companies he have-->
+<div class="text-form">
+  <h2>Companies</h2>
+</div>
+
+<!-- Outer container hides anything that scrolls outside its width -->
+<div class="carousel-container">
+  <!-- The track moves horizontally -->
+  <div class="carousel-track">
+    
+    <!-- Group 1: Original Items/ First Level--> 
+    <div class="carousel-group">
+      <div class="carousel-item">
+      <img src="src/images/Companies/Google-logo.png" alt="Google Logo"></div>
+
+    </div>
+    
+    <!-- Group 2: Duplicate Items for an invisible seamless rese/ Level 2t -->
+
+
+  </div>
+</div>
 
 <!-- POP UP FORMS -->
+<!-- Log IN FORMS -->
+
 <div class="form-popup" id="login-popup">
   <div class="form-box">
 
@@ -59,7 +83,7 @@
       <p>Please log in using your personal information to continue.</p>
     </div>
 
-    <div class="form-content">
+    <div class="form-content" id="login-form">
       <button class="close-btn" type="button">&times;</button>
 
       <h2>LOGIN</h2>
@@ -84,12 +108,54 @@
         Don't have an account?
         <a href="#" id="signup-link">Sign Up</a>
       </div>
-
     </div>
+
+
+    <!-- Sign Up FORMS -->
+
+    <div class="form-content" id="signup-form" style="display: none;">
+      <button class="close-btn" type="button">&times;</button>
+
+      <h2>Sign Up</h2>
+
+      <form action="#">
+        <div class="input-field">
+          <input type="email" required>
+          <label>Email</label>
+        </div>
+
+        <div class="input-field">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+
+      <div class="bottom-link">
+        You have an account?
+        <a href="#" id="login-link">Log In</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <!--Black Part with More inFo-->
+<div class="btn-box">
+    <nav class="btn-navbar">
+        <ul class="links">
+            <li><a href="help.html">Help</a></li>
+            <li><a href="Site-guideline.html">Site Guidline</a></li>
+            <li><a href="Terms&Conditions.html">Terms & Conditions</a></li>
+            <li><a href="CopyRight-Policy.html">CopyRight Policy</a></li>
+        </ul>
 
+        <a href="#" class="logo">
+            <img src="src/images/RateMyCoopMiniLogo.png" alt="Rate My Coop logo">
+            <h3>2026 Rate My Coop, LLC. All Rights Reserved</h3>
+        </a>
+    </nav>
+</div>
 </body>
 </html>
