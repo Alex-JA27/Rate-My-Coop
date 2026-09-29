@@ -21,8 +21,8 @@ def get_session()-> Generator[Session]:
      """ Retrieves a brandnew session for each FastAPI connnection"""
      db = SESSION_LOCAL()
      try:
-       yield db
+         yield db
      finally:
-       db.close()
+        db.close()
        
 SessionDep = Annotated[Session ,Depends(get_session)]
