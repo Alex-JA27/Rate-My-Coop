@@ -5,7 +5,7 @@ from models import Base,Company,Role,User,Review
 from database import get_session, engine, SessionDep
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from schemas import CompanyOut
+from schemas import CompanyOut, RoleOut,ReviewOut
 
 
 def create_db_and_tables()-> None:
@@ -29,3 +29,33 @@ def read_all_companies(session:SessionDep)-> Sequence[Company]:
 def get_companies(session:SessionDep)-> Sequence[Company]:
     """ Function to return the list of companies"""
     return read_all_companies(session)
+
+def read_roles_within_company(session:SessionDep,company_id : int)-> Sequence[Role]:
+    """ Reads and reproduces all the roles within a specific company"""
+    stmt = (select(Role)
+            .where(Role.company_id == company_id))
+
+    selected_roles = session.scalars(stmt).all()
+    return selected_roles
+
+
+@app.get("/companies/{company_id}/roles",response_model=list[RoleOut])
+def get_roles(session:SessionDep,company_id:int)-> Sequence[Role]:
+    """ Function to return all selected company id"""
+    return read_roles_within_company(session,company_id)
+
+
+
+def read_reviews_for_role(session:SessionDep,role_id :int)-> Sequence[Review]:
+    """Reads and reproduces all the reviews about a specfic role"""
+ 
+    stmt =(select(Review)
+            .where(Review.role_id == role_id ))
+    
+    selected_reviews = session.scalars(stmt).all()
+    return selected_reviews
+
+@app.get("/roles/{role_id}/reviews",response_model=list[ReviewOut])
+def get_review(session:SessionDep,role_id:int)-> Sequence[Review]:
+    """ Function to return return all selected reviews for a role"""
+    return read_reviews_for_role(session,role_id)
