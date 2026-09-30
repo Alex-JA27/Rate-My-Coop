@@ -5,7 +5,7 @@ from models import Base,Company,Role,User,Review
 from database import get_session, engine, SessionDep
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from schemas import CompanyOut, RoleOut,ReviewOut
+from schemas import CompanyOut, RoleOut,ReviewOut,CompanyIn
 
 
 def create_db_and_tables()-> None:
@@ -59,3 +59,23 @@ def read_reviews_for_role(session:SessionDep,role_id :int)-> Sequence[Review]:
 def get_review(session:SessionDep,role_id:int)-> Sequence[Review]:
     """ Function to return return all selected reviews for a role"""
     return read_reviews_for_role(session,role_id)
+
+@app.post("/companies",response_model=CompanyOut)
+def create_company(session:SessionDep,company : CompanyIn) -> Company:
+    """ Should ccreate a company role/object using SQLAlchemy """
+    
+    stmt = select(Company).where(Company.name == company.name )
+    if session.scalars(stmt).first() is None:
+        new_company = Company(name = company.name)
+        session.add(new_company)
+        session.commit()
+        return new_company
+    else:
+        raise HTTPException(status_code=409,detail="Company already exists")
+        
+        
+    
+    
+    
+    
+    

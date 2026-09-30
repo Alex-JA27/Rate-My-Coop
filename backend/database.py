@@ -13,11 +13,11 @@ SESSION_LOCAL = sessionmaker(bind=engine)
 
 
 def get_session()-> Generator[Session]:
-     """ Retrieves a brandnew session for each FastAPI connnection"""
-     db = SESSION_LOCAL()
-     try:
-         yield db
-     finally:
+    """ Retrieves a brandnew session for each FastAPI connnection"""
+    db = SESSION_LOCAL()
+    try:
+        yield db
+    finally:
         db.close()
-       
+
 SessionDep = Annotated[Session ,Depends(get_session)]

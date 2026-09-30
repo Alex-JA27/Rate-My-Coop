@@ -14,7 +14,7 @@ class Company(Base):
     """ Company Class representing companies table"""
     __tablename__ = "companies"
     company_id : Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str]= mapped_column(String(40))
+    name: Mapped[str]= mapped_column(String(40),unique=True)
     roles: Mapped[List["Role"]] = relationship(back_populates="company")
 
 

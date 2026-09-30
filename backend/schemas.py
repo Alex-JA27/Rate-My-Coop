@@ -23,3 +23,8 @@ class ReviewOut(BaseModel):
     term : str
     review_body : str 
     anonymous_flag : bool
+
+
+class CompanyIn(BaseModel):
+    """ Class orchestrates which part of the company model should be sent in from the end user"""
+    name : str
