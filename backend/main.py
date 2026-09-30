@@ -2,10 +2,9 @@
 from typing import Sequence
 from fastapi import Depends, FastAPI,HTTPException,Query
 from models import Base,Company,Role,User,Review
-from database import get_session, engine, SessionDep
-from sqlalchemy.orm import Session
+from database import engine, SessionDep
 from sqlalchemy import select
-from schemas import CompanyOut, RoleOut,ReviewOut,CompanyIn
+from schemas import CompanyOut, RoleOut,ReviewOut,CompanyIn,RoleIn,ReviewIn
 
 
 def create_db_and_tables()-> None:
@@ -48,10 +47,10 @@ def get_roles(session:SessionDep,company_id:int)-> Sequence[Role]:
 
 def read_reviews_for_role(session:SessionDep,role_id :int)-> Sequence[Review]:
     """Reads and reproduces all the reviews about a specfic role"""
- 
+
     stmt =(select(Review)
             .where(Review.role_id == role_id ))
-    
+
     selected_reviews = session.scalars(stmt).all()
     return selected_reviews
 
@@ -62,9 +61,8 @@ def get_review(session:SessionDep,role_id:int)-> Sequence[Review]:
 
 @app.post("/companies",response_model=CompanyOut)
 def create_company(session:SessionDep,company : CompanyIn) -> Company:
-    """ Should ccreate a company role/object using SQLAlchemy """
-    
-    stmt = select(Company).where(Company.name == company.name )
+    """ Should ccreate a company row/object using SQLAlchemy """
+    stmt = select(Company).where(Company.name == company.name.strip() )
     if session.scalars(stmt).first() is None:
         new_company = Company(name = company.name)
         session.add(new_company)
@@ -72,10 +70,45 @@ def create_company(session:SessionDep,company : CompanyIn) -> Company:
         return new_company
     else:
         raise HTTPException(status_code=409,detail="Company already exists")
+
+@app.post("/roles",response_model=RoleOut)
+def create_role(session:SessionDep,role:RoleIn)-> Role:
+    """Should create a Role row/Object using SqlAlchemy"""
+    stmt = select(Role).where(Role.company_id == role.company_id,Role.title == role.title)
+
+
+    if session.get(Company,role.company_id) is None:
+        raise HTTPException(status_code=404,detail="This company dosen't exist")
+
+    if session.scalars(stmt).first() is None:
+        new_role = Role(title = role.title.strip(),category = role.category,company_id = role.company_id)
+        session.add(new_role)
+        session.commit()
+        return new_role
+    else:
+        raise HTTPException(status_code=409,
+                            detail="This role already exists for the selected company")
+
+
+@app.post("/reviews",response_model=ReviewOut)
+def create_review(session:SessionDep,review:ReviewIn)-> Review:
+    """ Should create a new review Row/Object using SQLAlchemy"""
+    
+ 
+    if session.get(Role,review.role_id) is None:
+        raise HTTPException(status_code=404,detail="This role dosen't exist")
+    
+    if session.get(User,review.user_id) is None:
+        raise HTTPException(status_code=404)
+    
+    term_text = f"{review.term.season.value}{review.term.year}"
+    
+    new_review = Review(star_rating = review.star_rating,term = term_text,
+                        review_body = review.review_body,role_id = review.role_id, user_id = review.user_id,anonymous_flag = review.anonymous_flag)
+        
+    session.add(new_review)
+    session.commit()
+    return new_review
+  
         
         
-    
-    
-    
-    
-    
