@@ -489,82 +489,462 @@ transform: translateY(-40px);
 }
 
 
+/* =========================================
+   EXPLORE COMPANIES SECTION
+========================================= */
 
-/* Carousel of Companies */
-/* Text before the carousel */
-.text-from {
-    width: 100%;
-    max-width: 750px;
+.companies-section {
+    width: 90%;
+    max-width: 1200px;
 
-    display: flex;
-    flex-direction: column;
+    margin: 70px auto;
+    padding: 45px;
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.5fr;
+    gap: 50px;
     align-items: center;
 
-    text-align: center;
-    gap: 12px;
+    background-color: #ffffff;
 
-transform: translateY(-40px);
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.companies-info {
+    padding: 10px;
+}
+
+
+.section-label {
+    margin: 0 0 10px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #ff1f2d;
+}
+
+
+.companies-info h2 {
+    margin: 0 0 18px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 700;
+
+    color: #222222;
+}
+
+
+.companies-info > p:not(.section-label) {
+    margin: 0 0 28px;
+
+    font-size: 0.98rem;
+    line-height: 1.7;
+
+    color: #666666;
+}
+
+
+/* Browse Button */
+
+.browse-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 20px;
+
+    background-color: #ff1f2d;
+    color: white;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    box-shadow: 0 5px 15px rgba(255, 31, 45, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.browse-btn span {
+    font-size: 1.2rem;
+
+    transition: transform 0.2s ease;
+}
+
+
+.browse-btn:hover {
+    background-color: #e51927;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(255, 31, 45, 0.28);
+}
+
+
+.browse-btn:hover span {
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.companies-carousel {
+    min-width: 0;
+
+    padding: 30px;
+
+    background-color: #FFFBEF;
+
+    border-radius: 20px;
+}
+
+
+/* =========================================
+   CAROUSEL HEADER
+========================================= */
+
+.carousel-header {
+    margin-bottom: 25px;
+}
+
+
+.carousel-small-title {
+    margin: 0 0 5px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #ff1f2d;
+}
+
+
+.carousel-header h3 {
+    margin: 0;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   CAROUSEL WINDOW
+========================================= */
+
+.carousel-window {
+    width: 100%;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* Fade on left and right sides */
+
+.carousel-window::before,
+.carousel-window::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 55px;
+    height: 100%;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+.carousel-window::before {
+    left: 0;
+
+    background: linear-gradient(
+        to right,
+        #FFFBEF,
+        transparent
+    );
+}
+
+
+.carousel-window::after {
+    right: 0;
+
+    background: linear-gradient(
+        to left,
+        #FFFBEF,
+        transparent
+    );
+}
+
+
+/* =========================================
+   MOVING COMPANY TRACK
+========================================= */
+
+.company-track {
+    display: flex;
+
+    width: max-content;
+
+    gap: 18px;
+
+    padding: 10px 0 20px;
+
+    animation: companyScroll 28s linear infinite;
+}
+
+
+/* Pause when hovering */
+
+.carousel-window:hover .company-track {
+    animation-play-state: paused;
+}
+
+
+/* =========================================
+   COMPANY LOGO CARDS
+========================================= */
+
+.company-logo-card {
+    flex: 0 0 155px;
+
+    width: 155px;
+    height: 135px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+    background-color: white;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Card Hover */
+
+.company-logo-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(255, 31, 45, 0.30);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================
+   COMPANY LOGOS
+========================================= */
+
+.company-logo-card img {
+    width: 110px;
+    height: 75px;
+
+    object-fit: contain;
+
+    transition: transform 0.25s ease;
+}
+
+
+.company-logo-card:hover img {
+    transform: scale(1.07);
+}
+
+
+/* INFINITE CAROUSEL ANIMATION */
+
+@keyframes companyScroll {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 9px));
+    }
 
 }
 
-/* Base container layout */
-.carousel-container {
-  overflow: hidden; /* Hides the off-screen items */
-  width: 1000%;
-  max-width: 90000px;
-  margin: 0;
-  border-radius: 8px;
+
+/* BOTTOM TEXT */
+
+.carousel-bottom {
+    margin-top: 5px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 0.78rem;
+
+    color: #888888;
 }
 
-/* The animated track */
-.carousel-track {
-  display: flex;
-  width: max-content; /* Extends dynamically to fit all groups */
-  animation: scrollInfinite 10s linear infinite; /* Loops forever */
+
+.carousel-bottom a {
+    color: #ff1f2d;
+
+    font-weight: 700;
+
+    text-decoration: none;
 }
 
-/* Individual card groupings */
-.carousel-group {
-  display: flex;
-  gap: 30px;
-  padding: 30px;
+
+.carousel-bottom a:hover {
+    text-decoration: underline;
 }
 
-/* Items inside the carousel */
-.carousel-item {
-  width: 80px;
-  height: 80px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  flex-shrink: 0; /* Prevents cards from crushing together */
-}
-.carousel-item img {
-  width: 300px;
-  height: 300px;
-  object-fit: contain;
-  border-radius: 9px;
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .companies-section {
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+
+        gap: 30px;
+    }
+
+
+    .companies-info {
+        text-align: center;
+    }
+
+
+    .companies-info h2 {
+        font-size: 1.9rem;
+    }
+
+
+    .browse-btn {
+        justify-content: center;
+    }
+
 }
 
-/* Keyframe logic: Translate half the track length */
-@keyframes scrollInfinite {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Moves group 1 entirely out of view */
-  }
-}
 
-/* Optional: Pause the scrolling animation when hovering over it */
-.carousel-container:hover .carousel-track {
-  animation-play-state: paused;
-}
+/* MOBILE */
 
+@media (max-width: 600px) {
+
+    .companies-section {
+        width: 94%;
+
+        margin: 45px auto;
+
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+
+    .companies-info {
+        padding: 5px;
+    }
+
+
+    .companies-info h2 {
+        font-size: 1.7rem;
+    }
+
+
+    .companies-carousel {
+        padding: 20px 15px;
+    }
+
+
+    .carousel-header h3 {
+        font-size: 1.1rem;
+    }
+
+
+    .company-logo-card {
+        flex: 0 0 135px;
+
+        width: 135px;
+        height: 115px;
+
+        padding: 18px;
+    }
+
+
+    .company-logo-card img {
+        width: 90px;
+        height: 60px;
+    }
+
+
+    .company-track {
+        gap: 14px;
+
+        animation-duration: 22s;
+    }
+
+
+    .carousel-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+}
 
 
 /* Botton Black Box */
