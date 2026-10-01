@@ -1,6 +1,6 @@
 """ Establishing Simple FastAPI connection"""
 from typing import Sequence
-from fastapi import Depends, FastAPI,HTTPException,Query
+from fastapi import FastAPI,HTTPException
 from models import Base,Company,Role,User,Review
 from database import engine, SessionDep
 from sqlalchemy import select
@@ -81,7 +81,8 @@ def create_role(session:SessionDep,role:RoleIn)-> Role:
         raise HTTPException(status_code=404,detail="This company dosen't exist")
 
     if session.scalars(stmt).first() is None:
-        new_role = Role(title = role.title.strip(),category = role.category,company_id = role.company_id)
+        new_role = Role(title = role.title.strip(),category =
+                        role.category,company_id = role.company_id)
         session.add(new_role)
         session.commit()
         return new_role
@@ -93,22 +94,20 @@ def create_role(session:SessionDep,role:RoleIn)-> Role:
 @app.post("/reviews",response_model=ReviewOut)
 def create_review(session:SessionDep,review:ReviewIn)-> Review:
     """ Should create a new review Row/Object using SQLAlchemy"""
-    
- 
+
+
     if session.get(Role,review.role_id) is None:
         raise HTTPException(status_code=404,detail="This role dosen't exist")
-    
+
     if session.get(User,review.user_id) is None:
         raise HTTPException(status_code=404)
-    
+
     term_text = f"{review.term.season.value}{review.term.year}"
-    
+
     new_review = Review(star_rating = review.star_rating,term = term_text,
-                        review_body = review.review_body,role_id = review.role_id, user_id = review.user_id,anonymous_flag = review.anonymous_flag)
-        
+                        review_body = review.review_body,role_id = review.role_id,
+                        user_id = review.user_id,anonymous_flag = review.anonymous_flag)
+
     session.add(new_review)
     session.commit()
     return new_review
-  
-        
-        

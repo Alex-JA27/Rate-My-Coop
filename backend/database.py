@@ -1,8 +1,8 @@
 """ SQL Database connection Code"""
-from dotenv import load_dotenv
 import os
 from collections.abc import Generator
 from typing import Annotated
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,Session
 from fastapi import Depends

@@ -1,4 +1,4 @@
-""" Role Industries"""
+"""role_industries"""
 from enum import Enum
 
 class RoleCategory(str,Enum):
@@ -12,11 +12,9 @@ class RoleCategory(str,Enum):
     GOVERNMENT ="Government & Nonprofit"
     LAW = "Law"
     OTHER = "Other"
-    
-    
+
+
 class Seasons(str,Enum):
     "Different Seasons for dictating terms of Co-Op's"
     FALL = "Fall"
     SPRING = "Spring"
-
-

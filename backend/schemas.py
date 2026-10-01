@@ -1,7 +1,8 @@
 """ Pydantic Models used to define data to and from users"""
-from pydantic import BaseModel,ConfigDict,Field,field_validator
-from Industries import RoleCategory, Seasons
 from datetime import datetime
+from pydantic import BaseModel,ConfigDict,Field,field_validator
+from industries import RoleCategory, Seasons
+
 
 class CompanyOut(BaseModel):
     """ Class orchestrates which parts of our company model 
@@ -48,7 +49,7 @@ class Term(BaseModel):
         """ checks whether the given year value is valid """
         if value > datetime.now().year:
             raise ValueError("That year is invalid")
-        return value 
+        return value
 
 class ReviewIn(BaseModel):
     """ Class orchestrates which part of the role model should be sent in from the end user """
@@ -58,5 +59,3 @@ class ReviewIn(BaseModel):
     role_id : int
     user_id : int
     anonymous_flag :bool = True
-
-   
